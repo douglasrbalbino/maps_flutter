@@ -10,6 +10,9 @@ class PlaceFormScreen extends StatefulWidget {
 class _PlaceFormScreenState extends State<PlaceFormScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(title: Text('Novo Lugar')),
+      body: Center(child: Text('Conteúdo do Formulário')),
+    );
   }
 }
