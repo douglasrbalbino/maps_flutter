@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ), // Deixa a aplicação responsiva
       home: PlacesListScreen(),
-      routes: {AppRoutes.placeForm: (ctx) => const PlaceFormScreen()},
+      routes: {AppRoutes.placeForm: (ctx) => PlaceFormScreen()},
       debugShowCheckedModeBanner: false,
     );
   }
