@@ -6,8 +6,9 @@ class PlacesListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(
-        title: const Text('Novo lugar'),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Minha Lista'),
         actions: [
           IconButton(
             onPressed: () {
@@ -17,6 +18,7 @@ class PlacesListScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(child: CircularProgressIndicator()),);
+      body: const Center(child: CircularProgressIndicator()),
+    );
   }
 }

@@ -1,78 +1,86 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:maps_application/Widgets/image_input.dart';
 
 class PlaceFormScreen extends StatefulWidget {
+  const PlaceFormScreen({Key? key}) : super(key: key);
+
   @override
-  _PlaceFormScreenState createState() => _PlaceFormScreenState();
+  State<PlaceFormScreen> createState() => _PlaceFormScreenState();
 }
 
 class _PlaceFormScreenState extends State<PlaceFormScreen> {
   final _titleController = TextEditingController();
-  File _pickedImage;
-  LatLng _pickedPosition;
 
-  void _selectImage(File pickedImage) {
-    setState(() {
-      _pickedImage = pickedImage;
-    });
-  }
+  void _submitForm() {} // metodo do botão
 
-  void _selectPosition(LatLng position) {
-    setState(() {
-      _pickedPosition = position;
-    });
-  }
+  // File _pickedImage;
+  // LatLng _pickedPosition;
 
-  bool _isValidForm() {
-    return _titleController.text.isNotEmpty &&
-        _pickedImage != null &&
-        _pickedPosition != null;
-  }
+  // void _selectImage(File pickedImage) {
+  //   setState(() {
+  //     _pickedImage = pickedImage;
+  //   });
+  // }
 
-  void _submitForm() {
-    if (!_isValidForm()) return;
+  // void _selectPosition(LatLng position) {
+  //   setState(() {
+  //     _pickedPosition = position;
+  //   });
+  // }
 
-    Provider.of<GreatPlaces>(
-      context,
-      listen: false,
-    ).addPlace(_titleController.text, _pickedImage, _pickedPosition);
-    Navigator.of(context).pop();
-  }
-}
+  // bool _isValidForm() {
+  //   return _titleController.text.isNotEmpty &&
+  //       _pickedImage != null &&
+  //       _pickedPosition != null;
+  // }
 
-class _PlaceFormScreenState extends State<PlaceFormScreen> {
+  // void _submitForm() {
+  //   if (!_isValidForm()) return;
+
+  //   Provider.of<GreatPlaces>(
+  //     context,
+  //     listen: false,
+  //   ).addPlace(_titleController.text, _pickedImage, _pickedPosition);
+  //   Navigator.of(context).pop();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Novo Lugar')),
+      appBar: AppBar(title: Text('Adicionar Imagem')),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                children: <Widget>[
-                  TextField(
-                    controller: _titleController,
-                    decoration: InputDecoration(labelText: 'Título'),
-                  ),
-                  SizedBox(height: 10),
-                  imageInput(this._selectImage),
-                  SizedBox(height: 10),
-                  LocationInput(this.selectPosition),
-                ],
+            //ocupa o espaço todo da tela ou que o elemento tiver para ocupar
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  children: <Widget>[
+                    TextField(
+                      controller: _titleController,
+                      decoration: InputDecoration(labelText: 'Título'),
+                    ),
+
+                    const SizedBox(height: 10),
+                    const ImageInput(),
+                  ],
+                ),
               ),
             ),
           ),
-          RaiseButton.icon(
-            icon: Icon(Icons.add),
-            label: Text('Adicionar'),
-            color: Theme.of(context).accentColor,
-            elevation: 0,
-            MaterialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            onPressed: _isValidForm() ? _submitForm : null,
+
+          ElevatedButton.icon(
+            icon: const Icon(Icons.add),
+            label: const Text('Adicionar'),
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.black,
+              backgroundColor: Theme.of(context).colorScheme.secondary,
+              elevation: 0,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            onPressed: _submitForm,
           ),
         ],
       ),

@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: Colors.amber,
         hintColor: Colors.amber,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ), // Deixa a aplicação responsiva
