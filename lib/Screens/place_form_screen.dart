@@ -17,8 +17,8 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
 
   File? pickedImage;
 
-  void _selectImage(File pickedImage) {
-    pickedImage = pickedImage;
+  void _selectImage(File image) {
+    pickedImage = image;
   }
 
   void _submitForm() {
